@@ -1,0 +1,10 @@
+1. link pertama                             : https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+
+2. ambil keynya (contoh key aku)            : d71800fbb1ccca2e28180ee92a9cdd25
+
+3. masukin ke link pertama                  : https://api.openweathermap.org/data/2.5/weather?q={city name}&appid=d71800fbb1ccca2e28180ee92a9cdd25
+
+4. ubah kota di city namenya(contoh pinang) : https://api.openweathermap.org/data/2.5/weather?q=Bintan&appid=d71800fbb1ccca2e28180ee92a9cdd25
+
+5. tambahkan unit metric biar sesuai metric : https://api.openweathermap.org/data/2.5/weather?q=Tanjungpinang&appid=d71800fbb1ccca2e28180ee92a9cdd25&units=metric
+
