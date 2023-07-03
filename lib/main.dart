@@ -4,15 +4,12 @@ import 'package:azka/views/current.dart';
 import 'package:azka/views/informasi.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,22 +21,30 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-  WeatherAppClient client = WeatherAppClient(); 
+  WeatherAppClient client = WeatherAppClient();
   Weather? data;
+  TextEditingController searchController = TextEditingController();
 
-  // ini data kota yang ko cari, jadi kalau mau ganti kota ko ganti isi getcurrentweathernya
-  // contohnya sini aku pake kota jogja
   @override
-  Future<void> getData() async{
-    data = await client.getCurrentWeather("Tanjungpinang");
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+  void initState() {
+  super.initState();
+  getData("Cimahi");
+}
+
+  Future<void> getData(String cityName) async {
+    data = await client.getCurrentWeather(cityName);
+    setState(() {});
   }
 
   @override
@@ -50,53 +55,58 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white38,
         elevation: 0.0,
         title: const Text(
-          "Aplikasi Cuaca", 
-        style: TextStyle(color: Colors.black),
+          "Aplikasi Cuaca",
+          style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
-
       ),
-      body: FutureBuilder(
-        future: getData(),
-        builder: (context, snapshot){
-          if(snapshot.connectionState == ConnectionState.done){
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                hintText: 'Masukkan nama kota',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    getData(searchController.text);
+                  },
+                  icon: const Icon(Icons.search),
+                ),
+              ),
+            ),
+          ),
+          if (data != null)
+            Column(
               children: [
                 currentWeather(
-                "${data!.icon}", 
-                // sini icon aku masi manual, di data API ada icon tapi beda sama icon flutter, ko bisa pake icon dari apinya
-                // pake  flutter_weather_icons: ^3.0.0 taro di pubspec.yaml di bawah dependencies
-                "${data!.temp}", 
-                "${data!.cityName}"),
-                SizedBox(height: 60,),
-
+                  "${data!.icon}",
+                  "${data!.temp}",
+                  "${data!.cityName}",
+                ),
+                const SizedBox(height: 60),
                 const Text(
-                  "Information",
+                  "Informasi",
                   style: TextStyle(
-                  fontSize: 24.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                    fontSize: 24.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Divider(),
-                SizedBox(height: 20,),
+                SizedBox(height: 20),
                 informasi(
-                "${data!.wind}", 
-                "${data!.humid}", 
-                "${data!.pressure}",
-                "${data!.feels_like}"),
+                  "${data!.wind}",
+                  "${data!.humid}",
+                  "${data!.pressure}",
+                  "${data!.feels_like}",
+                ),
               ],
-            );
-          }
-          else if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return Container();
-        }
-      )
+            ),
+        ],
+      ),
     );
   }
 }

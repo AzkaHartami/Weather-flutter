@@ -36,11 +36,11 @@ Widget currentWeather(String icon, String temp, String cityName) {
       children: [
         Icon(
           weatherIcon, // Menggunakan variabel weatherIcon sebagai IconData ikon
-          size: 100,
+          size: 50,
         ),
-        SizedBox(height: 10,),
+        SizedBox(height: 20,),
         Text(
-          "$temp",
+          "$temp°",
           style: TextStyle(
             fontSize: 40,
           ),

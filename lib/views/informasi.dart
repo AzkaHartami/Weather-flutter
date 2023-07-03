@@ -23,13 +23,13 @@ Widget informasi(
               children: [
 
                 Text(
-                  "Wind",
+                  "Angin",
                 style: titlefont,
                 ),
                 SizedBox(height: 15,),
 
                 Text(
-                  "Preasure",
+                  "Tekanan",
                   style: titlefont,
                 ),
               ],
@@ -41,13 +41,13 @@ Widget informasi(
               children: [
 
                 Text(
-                  "$wind",
+                  "$wind m/s",
                 style: infoFont,
                 ),
                 SizedBox(height: 15,),
 
                 Text(
-                  "$pressure",
+                  "$pressure hPa",
                   style: infoFont,
                 ),
               ],
@@ -59,13 +59,13 @@ Widget informasi(
               children: [
 
                 Text(
-                  "Humid",
+                  "Kelembaban",
                 style: titlefont,
                 ),
                 SizedBox(height: 15,),
 
                 Text(
-                  "Feels Like",
+                  "Sensasi Termal",
                   style: titlefont,
                 ),
               ],
@@ -76,13 +76,13 @@ Widget informasi(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "$humid",
+                  "$humid%",
                 style: infoFont,
                 ),
                 SizedBox(height: 15,),
 
                 Text(
-                  "$feels_like",
+                  "$feels_like°",
                   style: infoFont,
                 ),
               ],
