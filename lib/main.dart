@@ -4,6 +4,7 @@ import 'package:azka/views/current.dart';
 import 'package:azka/views/informasi.dart';
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   // contohnya sini aku pake kota jogja
   @override
   Future<void> getData() async{
-    data = await client.getCurrentWeather("Yogyakarta");
+    data = await client.getCurrentWeather("Tanjungpinang");
   }
 
   @override
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 currentWeather(
-                Icons.wb_sunny_rounded, 
+                "${data!.icon}", 
                 // sini icon aku masi manual, di data API ada icon tapi beda sama icon flutter, ko bisa pake icon dari apinya
                 // pake  flutter_weather_icons: ^3.0.0 taro di pubspec.yaml di bawah dependencies
                 "${data!.temp}", 
