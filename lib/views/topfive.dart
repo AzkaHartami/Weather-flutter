@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-Widget topFive(String cityName, String temp, String icon  ) {
+Widget topFive(String cityName, String temp, String icon,
+String cityName1, String temp1, String icon1,
+String cityName2, String temp2, String icon2,
+String cityName3, String temp3, String icon3
+) {
   IconData weatherIcon;
   if (icon == '01d') {
     weatherIcon = WeatherIcons.day_sunny;
@@ -26,55 +30,147 @@ Widget topFive(String cityName, String temp, String icon  ) {
   } else if (icon == '50d' || icon == '50n') {
     weatherIcon = WeatherIcons.fog;
   } else {
-    weatherIcon =
-        WeatherIcons.refresh; // Icon default jika tidak ada ikon yang cocok
+    weatherIcon = WeatherIcons.refresh; // Icon default jika tidak ada ikon yang cocok
   }
 
   return Container(
     height: 150, // Ukuran tinggi container
-    // width: 100,
     child: Padding(
       padding: EdgeInsets.all(10),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 4,
-        itemBuilder: (context, index) {
-          return Container(
-            width: 150, // Ukuran lebar card
-            child: Card(
-              elevation: 2.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "$cityName".toUpperCase(),
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+      child: Row(
+        children: [
+          Card(
+            elevation: 2.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Text(
+                    "$cityName".toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      "$temp°C",
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "$temp°C",
+                    style: TextStyle(
+                      fontSize: 12,
                     ),
-                    Icon(
-                      weatherIcon,
-                      size: 35,
-                    ),
-                  ],
-                ),
+                  ),
+                  Icon(
+                    weatherIcon,
+                    size: 35,
+                  ),
+                ],
               ),
             ),
-          );
-        },
+          ),
+          SizedBox(height: 10),
+          Card(
+            elevation: 2.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Text(
+                    "$cityName1".toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "$temp1°C",
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                  Icon(
+                    weatherIcon,
+                    size: 35,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Card(
+            elevation: 2.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Text(
+                    "$cityName2".toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "$temp2°C",
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                  Icon(
+                    weatherIcon,
+                    size: 35,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Card(
+            elevation: 2.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Text(
+                    "$cityName3".toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "$temp3°C",
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                  Icon(
+                    weatherIcon,
+                    size: 35,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     ),
   );

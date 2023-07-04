@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   Weather? data1;
   Weather? data2;
   Weather? data3;
+  Weather? data4;
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -44,10 +45,15 @@ class _HomePageState extends State<HomePage> {
 
   void initState() {
     super.initState();
+
+    
     getData("Cimahi");
-    getData1("jakarta");
-    getData2("Tanjungpinang");
-    getData3("Tanjungpinang");
+    
+    getData1("Tokyo", "Tokyo", "Tokyo");
+    getData2("London", "London", "London");
+    getData3("Johor", "Johor", "Johor");
+    getData4("Bandung", "Bandung" ,"Bandung");
+    
   }
 
   Future<void> getData(String cityName) async {
@@ -55,20 +61,35 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  Future<void> getData1(String cityName) async {
+  Future<void> getData1(String cityName, String temp, String icon) async {
     data1 = await client.getCurrentWeather(cityName);
+    data1 = await client.getCurrentWeather(temp);
+    data1 = await client.getCurrentWeather(icon);
     setState(() {});
   }
 
-  Future<void> getData2(String temp) async {
+  Future<void> getData2(String cityName, String temp, String icon) async {
+    data2 = await client.getCurrentWeather(cityName);
     data2 = await client.getCurrentWeather(temp);
+    data2 = await client.getCurrentWeather(icon);
     setState(() {});
   }
 
-  Future<void> getData3(String icon) async {
+  Future<void> getData3(String cityName, String temp, String icon) async {
+    data3 = await client.getCurrentWeather(cityName);
+    data3 = await client.getCurrentWeather(temp);
     data3 = await client.getCurrentWeather(icon);
     setState(() {});
   }
+
+  Future<void> getData4(String cityName, String temp, String icon) async {
+    data4 = await client.getCurrentWeather(cityName);
+    data4 = await client.getCurrentWeather(temp);
+    data4 = await client.getCurrentWeather(icon);
+    setState(() {});
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -147,8 +168,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                     topFive(
                       "${data1!.cityName}",
+                      "${data1!.temp}",
+                      "${data1!.icon}",
+                      "${data2!.cityName}",
                       "${data2!.temp}",
+                      "${data2!.icon}",
+                      "${data3!.cityName}",
+                      "${data3!.temp}",
                       "${data3!.icon}",
+                      "${data4!.cityName}",
+                      "${data4!.temp}",
+                      "${data4!.icon}",
                     ),
                     const SizedBox(height: 60),
                     const Text(
