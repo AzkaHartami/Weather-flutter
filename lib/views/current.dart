@@ -32,102 +32,155 @@ Widget currentWeather(String icon, String temp, String cityName, String wind,
         WeatherIcons.refresh; // Icon default jika tidak ada ikon yang cocok
   }
 
-  return Container(
-    width: 500,
-    child: Padding(
-      padding: EdgeInsets.all(10),
-      child: Card(
-        elevation: 2.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Text(
-                "$cityName".toUpperCase(),
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+  return SingleChildScrollView(
+    child: Container(
+      width: 527,
+      // height: 500,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Card(
+              elevation: 2.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-              SizedBox(height: 5),
-              Center(
-                child: Text(
-                  DateFormat().add_MMMMEEEEd().format(DateTime.now()),
-                  style: TextStyle(
-                    color: Colors.black45,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 50),
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          "$description",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Text(
+                      "$cityName".toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Center(
+                      child: Text(
+                        DateFormat().add_MMMMEEEEd().format(DateTime.now()),
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          "$temp°C",
-                          style: TextStyle(
-                            fontSize: 40,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.only(left: 0),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "$description",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                "$temp°C",
+                                style: TextStyle(
+                                  fontSize: 40,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                "min: $min°C / max: $max°C",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )
+                            ],
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          "min: $min°C / max: $max°C",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(right: 50),
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          weatherIcon, // Menggunakan variabel weatherIcon sebagai IconData ikon
-                          size: 75,
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'wind $wind m/s',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                        Container(
+                          padding: EdgeInsets.only(right: 10),
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                weatherIcon,
+                                size: 60,
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                'wind $wind m/s',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  // Container(
-                  //   child:
-                  // ),
-                ],
+                    SizedBox(height: 10),
+                  ],
+                ),
               ),
-              SizedBox(height: 10),
-            ],
+            ),
           ),
-        ),
+          //Container 4 card
+          Container(
+            height: 150, // Ukuran tinggi container
+            // width: 100,
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: 150, // Ukuran lebar card
+                    child: Card(
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              "$cityName".toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              "$temp°C",
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                            Icon(
+                              weatherIcon,
+                              size: 35,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          )
+        ],
       ),
     ),
   );

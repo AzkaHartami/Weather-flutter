@@ -8,6 +8,8 @@ class WeatherAppClient {
     var endpoint = Uri.parse(
         "https://api.openweathermap.org/data/2.5/weather?q=$location&appid=d71800fbb1ccca2e28180ee92a9cdd25&units=metric");
 
+    // List<Weather> cities = [];
+
     var response = await http.get(endpoint);
     var body = jsonDecode(response.body);
     print(Weather.fromJson(body).cityName);
