@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:weather_icons/weather_icons.dart'; // 
+import 'package:weather_icons/weather_icons.dart'; //
+import 'package:intl/intl.dart';
 
-Widget currentWeather(String icon, String temp, String cityName) {
-  IconData weatherIcon; 
+Widget currentWeather(String icon, String temp, String cityName, String wind,
+    String description, String min, String max) {
+  IconData weatherIcon;
   if (icon == '01d') {
     weatherIcon = WeatherIcons.day_sunny;
   } else if (icon == '01n') {
@@ -26,34 +28,107 @@ Widget currentWeather(String icon, String temp, String cityName) {
   } else if (icon == '50d' || icon == '50n') {
     weatherIcon = WeatherIcons.fog;
   } else {
-    weatherIcon = WeatherIcons.refresh; // Icon default jika tidak ada ikon yang cocok
+    weatherIcon =
+        WeatherIcons.refresh; // Icon default jika tidak ada ikon yang cocok
   }
 
-  return Center(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          weatherIcon, // Menggunakan variabel weatherIcon sebagai IconData ikon
-          size: 50,
+  return Container(
+    width: 500,
+    child: Padding(
+      padding: EdgeInsets.all(10),
+      child: Card(
+        elevation: 2.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
-        SizedBox(height: 20,),
-        Text(
-          "$temp°",
-          style: TextStyle(
-            fontSize: 40,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Text(
+                "$cityName".toUpperCase(),
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 5),
+              Center(
+                child: Text(
+                  DateFormat().add_MMMMEEEEd().format(DateTime.now()),
+                  style: TextStyle(
+                    color: Colors.black45,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(left: 50),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "$description",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "$temp°C",
+                          style: TextStyle(
+                            fontSize: 40,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "min: $min°C / max: $max°C",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(right: 50),
+                    child: Column(
+                      children: <Widget>[
+                        Icon(
+                          weatherIcon, // Menggunakan variabel weatherIcon sebagai IconData ikon
+                          size: 75,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'wind $wind m/s',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Container(
+                  //   child:
+                  // ),
+                ],
+              ),
+              SizedBox(height: 10),
+            ],
           ),
         ),
-        SizedBox(height: 10),
-        Text(
-          "$cityName",
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.black,
-          ),
-        ),
-      ],
+      ),
     ),
   );
 }
