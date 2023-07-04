@@ -132,54 +132,6 @@ Widget currentWeather(String icon, String temp, String cityName, String wind,
             ),
           ),
           //Container 4 card
-          Container(
-            height: 150, // Ukuran tinggi container
-            // width: 100,
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Container(
-                    width: 150, // Ukuran lebar card
-                    child: Card(
-                      elevation: 2.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              "$cityName".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "$temp°C",
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
-                            Icon(
-                              weatherIcon,
-                              size: 35,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          )
         ],
       ),
     ),

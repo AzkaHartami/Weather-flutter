@@ -3,6 +3,7 @@ import 'package:myapp/model/services/api_fetch.dart';
 import 'package:myapp/views/current.dart';
 import 'package:myapp/views/informasi.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/views/topfive.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   WeatherAppClient client = WeatherAppClient();
   Weather? data;
+  Weather? data1;
+  Weather? data2;
+  Weather? data3;
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -40,11 +44,29 @@ class _HomePageState extends State<HomePage> {
 
   void initState() {
     super.initState();
-    getData("Tanjungpinang");
+    getData("Cimahi");
+    getData1("jakarta");
+    getData2("Tanjungpinang");
+    getData3("Tanjungpinang");
   }
 
   Future<void> getData(String cityName) async {
     data = await client.getCurrentWeather(cityName);
+    setState(() {});
+  }
+
+  Future<void> getData1(String cityName) async {
+    data1 = await client.getCurrentWeather(cityName);
+    setState(() {});
+  }
+
+  Future<void> getData2(String temp) async {
+    data2 = await client.getCurrentWeather(temp);
+    setState(() {});
+  }
+
+  Future<void> getData3(String icon) async {
+    data3 = await client.getCurrentWeather(icon);
     setState(() {});
   }
 
@@ -122,6 +144,11 @@ class _HomePageState extends State<HomePage> {
                       "${data!.description}",
                       "${data!.max}",
                       "${data!.min}",
+                    ),
+                    topFive(
+                      "${data1!.cityName}",
+                      "${data2!.temp}",
+                      "${data3!.icon}",
                     ),
                     const SizedBox(height: 60),
                     const Text(
