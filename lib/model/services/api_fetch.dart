@@ -6,7 +6,7 @@ import 'package:myapp/model/data_api.dart';
 class WeatherAppClient {
   Future<Weather>? getCurrentWeather(String? location) async {
     var endpoint = Uri.parse(
-        "https://api.openweathermap.org/data/2.5/weather?q=$location&appid=d71800fbb1ccca2e28180ee92a9cdd25&units=metric");
+        "https://api.openweathermap.org/data/2.5/weather?q=$location&appid=1e7ba1079bfdd225b2d8854080a812a7&units=metric");
 
     // List<Weather> cities = [];
 

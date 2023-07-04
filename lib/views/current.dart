@@ -52,7 +52,7 @@ Widget currentWeather(String icon, String temp, String cityName, String wind,
                     Text(
                       "$cityName".toUpperCase(),
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 24,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -62,8 +62,8 @@ Widget currentWeather(String icon, String temp, String cityName, String wind,
                       child: Text(
                         DateFormat().add_MMMMEEEEd().format(DateTime.now()),
                         style: TextStyle(
-                          color: Colors.black45,
-                          fontSize: 24,
+                          color: Colors.black,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

@@ -1,97 +1,90 @@
 import 'package:flutter/material.dart';
 
-  TextStyle titlefont =const TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0);
-
-  TextStyle infoFont =const TextStyle(fontWeight: FontWeight.w400, fontSize: 18.0);
+TextStyle titleFont =
+    const TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0);
+TextStyle infoFont =
+    const TextStyle(fontWeight: FontWeight.w400, fontSize: 18.0);
 
 Widget informasi(
-  String wind, String humid, String pressure, String feels_like){
-  return Container(
-    width: double.infinity,
-    padding: EdgeInsets.all(18.0),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-                Text(
-                  "Angin",
-                style: titlefont,
-                ),
-                SizedBox(height: 15,),
-
-                Text(
-                  "Tekanan",
-                  style: titlefont,
-                ),
-              ],
+  String wind,
+  String humid,
+  String pressure,
+  String feels_like,
+) {
+  return Card(
+    elevation: 2.0,
+    margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+    child: Padding(
+      padding: EdgeInsets.all(18.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Text(
+              "INFORMATION",
+              style: TextStyle(
+                fontSize: 24.0,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-
-             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-                Text(
-                  "$wind m/s",
-                style: infoFont,
-                ),
-                SizedBox(height: 15,),
-
-                Text(
-                  "$pressure hPa",
-                  style: infoFont,
-                ),
-              ],
-            ),
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-                Text(
-                  "Kelembaban",
-                style: titlefont,
-                ),
-                SizedBox(height: 15,),
-
-                Text(
-                  "Sensasi Termal",
-                  style: titlefont,
-                ),
-              ],
-            ),
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$humid%",
-                style: infoFont,
-                ),
-                SizedBox(height: 15,),
-
-                Text(
-                  "$feels_like°",
-                  style: infoFont,
-                ),
-              ],
-            ),
-      ],
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Wind",
+                    style: titleFont,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "Pressure",
+                    style: titleFont,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "Humidity",
+                    style: titleFont,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "Feels Like",
+                    style: titleFont,
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "$wind m/s",
+                    style: infoFont,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "$pressure hPa",
+                    style: infoFont,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "$humid%",
+                    style: infoFont,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "$feels_like°",
+                    style: infoFont,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     ),
-          ],
-        ),
-
-        
   );
 }

@@ -46,14 +46,12 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    
-    getData("Cimahi");
-    
+    getData("Tanjungpinang");
+
     getData1("Tokyo", "Tokyo", "Tokyo");
     getData2("London", "London", "London");
     getData3("Johor", "Johor", "Johor");
-    getData4("Bandung", "Bandung" ,"Bandung");
-    
+    getData4("Bandung", "Bandung", "Bandung");
   }
 
   Future<void> getData(String cityName) async {
@@ -89,8 +87,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +117,8 @@ class _HomePageState extends State<HomePage> {
               // Padding(
               //   padding: const EdgeInsets.all(16.0),
               Container(
-                width: 400,
+                width: 300,
+                padding: EdgeInsets.only(top: 5, bottom: 5),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 255, 255,
                       255), // Ubah warna latar belakang sesuai keinginan Anda
@@ -135,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 10),
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: TextField(
                   controller: searchController,
                   decoration: InputDecoration(
@@ -166,36 +163,33 @@ class _HomePageState extends State<HomePage> {
                       "${data!.max}",
                       "${data!.min}",
                     ),
-                    topFive(
-                      "${data1!.cityName}",
-                      "${data1!.temp}",
-                      "${data1!.icon}",
-                      "${data2!.cityName}",
-                      "${data2!.temp}",
-                      "${data2!.icon}",
-                      "${data3!.cityName}",
-                      "${data3!.temp}",
-                      "${data3!.icon}",
-                      "${data4!.cityName}",
-                      "${data4!.temp}",
-                      "${data4!.icon}",
-                    ),
-                    const SizedBox(height: 60),
-                    const Text(
-                      "Informasi",
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const SizedBox(height: 10),
+
                     const Divider(),
-                    SizedBox(height: 20),
+                    // SizedBox(height: 0),
                     informasi(
                       "${data!.wind}",
                       "${data!.humid}",
                       "${data!.pressure}",
                       "${data!.feels_like}",
+                    ),
+                    topFive(
+                      "${data1!.cityName}",
+                      "${data1!.temp}",
+                      "${data1!.icon}",
+                      "${data1!.wind}",
+                      "${data2!.cityName}",
+                      "${data2!.temp}",
+                      "${data2!.icon}",
+                      "${data2!.wind}",
+                      "${data3!.cityName}",
+                      "${data3!.temp}",
+                      "${data3!.icon}",
+                      "${data3!.wind}",
+                      "${data4!.cityName}",
+                      "${data4!.temp}",
+                      "${data4!.icon}",
+                      "${data4!.wind}",
                     ),
                   ],
                 ),
